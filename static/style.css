@@ -1,0 +1,24 @@
+body            { font-family: sans-serif; background: #eee; }
+a, h1, h2       { color: #A0522D; }
+h1, h2          { font-family: 'Garamond', serif; margin: 0; }
+h1              { border-bottom: 2px solid #eee; }
+h2              { font-size: 1.2em; }
+ul              {list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color:#FFF8DC;}
+li              {float: left;}
+li a            {display: inline-block; color: #300; text-align: center; padding: 14px 16px; text-decoration: none;}
+li a:hover      {background-color:#FFE4E1;}
+table           {border-collapse: collapse;}
+table           {width: 100%;}
+th              {height: 50px;}
+table,td,th     {border: 1px solid #A0522D;}
+tr:hover        {background-color: #FFF0F5}
+
+.page           { margin: 2em auto; width: 50em; border: 5px solid #ccc; padding: 0.8em; background: white; }
+.entries        { list-style: none; margin: 0; padding: 0; }
+.entries li     { margin: 0.8em 1.2em; }
+.entries li h2  { margin-left: -1em; }
+.add-entry      { font-size: 0.9em; border-bottom: 1px solid #ccc; }
+.add-entry dl   { font-weight: bold; }
+.metanav        { text-align: right; font-size: 0.8em; padding: 0.3em; margin-bottom: 1em; background: #F5DEB3; }
+.flash          { background: #BC8F8F; padding: 0.5em; border: 1px solid #F5DEB3; }
+.error          { background: #f0d6d6; padding: 0.5em; }

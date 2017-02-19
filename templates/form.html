@@ -1,0 +1,63 @@
+{% extends "layout.html" %} 
+{% block body %} 
+{% if session.logged_in %}
+
+{% if entry %}
+<form action='{{ url_for('update_story', story_id=entry.id) }}' method=post class=add-entry>
+	<p><label for='story_title'> Story Title </label></p>
+	<textarea id='story_title' name='story_title' cols='65' rows='1'>{{entry.story_title}}</textarea>
+	<p><label for='user_story'> User Story </label></p>
+	<textarea id='user_story' name='user_story' cols='65' rows='5'>{{entry.user_story}}</textarea>
+	<p><label for='acceptance_criteria'> Acceptance Criteria </label></p>
+	<textarea id='acceptance_criteria' name='acceptance_criteria' cols='65' rows='6'>{{entry.acceptance_criteria}}</textarea>
+
+	<p><label for='business_value'> Business Value </label></p>
+	<input id='business_value' name='business_value' type='number' min='100' max='1500' step='100' value='{{entry.business_value}}'>
+	<p><label for='estimation'> Estimation(h) </label></p>
+	<input id='estimation' name='estimation' type='number' min='0.5' max='40' step='0.5' value='{{entry.estimation}}'>
+
+	<p><label for='status'> Status </label></p>
+	<select id='status' name='status' value='{{entry.status}}'>
+		<option value='planning'>Planning</option>
+		<option value='to do'>To DO</option>
+		<option value='in progress'>In Progress</option>
+		<option value='review'>Review</option>
+		<option value='done'>Done</option>
+	</select>
+	<p><input type='submit' value='UPDATE'></p>
+</form>
+
+{% else %}
+<form action='{{ url_for('add_story') }}' method=post class=add-entry>
+	<p><label for='story_title'> Story Title </label></p>
+	<textarea id='story_title' name='story_title' cols='65' rows='1' value=''></textarea>
+	<p><label for='user_story'> User Story </label></p>
+	<textarea id='user_story' name='user_story' cols='65' rows='5' value=''></textarea>
+	<p><label for='acceptance_criteria'> Acceptance Criteria </label></p>
+	<textarea id='acceptance_criteria' name='acceptance_criteria' cols='65' rows='6' value=''></textarea>
+
+	<p><label for='business_value'> Business Value </label></p>
+	<input id='business_value' name='business_value' type='number' min='100' max='1500' step='100' value='100'>
+	<p><label for='estimation'> Estimation(h) </label></p>
+	<input id='estimation' name='estimation' type='number' min='0.5' max='40' step='0.5' value='0.5'>
+
+	<p><label for='status'> Status </label></p>
+	<select id='status' name='status'>
+		<option value='planning'>Planning</option>
+		<option value='to do'>To DO</option>
+		<option value='in progress'>In Progress</option>
+		<option value='review'>Review</option>
+		<option value='done'>Done</option>
+	</select>
+	<p><input type='submit' value='CREATE'></p>
+</form>
+
+{% endif %} 
+{% endif %}
+<ul class=entries>
+	{% for entry in entries %}
+	<li>
+		<h2>{{ entry.title }}</h2>{{ entry.text|safe }} {% else %}
+		<li><em>Unbelievable. Super Sprinter 3000.</em> {% endfor %}
+</ul>
+{% endblock %}

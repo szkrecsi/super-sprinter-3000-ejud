@@ -1,0 +1,24 @@
+<!doctype html>
+<meta charset='utf-8'>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<title>{{ title }}</title>
+<div class=page>
+    <font face='Garamond'>
+        <div class=metanav>
+            {% if not session.logged_in %}
+            <a href="{{ url_for('login') }}">log in</a>
+            {% else %}
+            <ul>
+                <li><a href="{{ url_for('login') }}">Home</a></li>
+                <li><a href="{{ url_for('show_stories') }}">LIST</a></li>
+                <li><a href="{{ url_for('create_story') }}">ADD</a></li>
+                <li><a href="{{ url_for('logout') }}">Log out</a></li>
+            {% endif %}
+            </ul>
+        </div>
+        <h1>{{ header }}</h1>
+        {% for message in get_flashed_messages() %}
+        <div class=flash>{{ message }}</div>
+        {% endfor %} {% block body %}{% endblock %}
+    </font>
+</div>

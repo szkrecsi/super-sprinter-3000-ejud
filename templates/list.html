@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if session.logged_in %}
+
+<br>
+<div>
+    <table>
+        <tr>
+            <th scope='col'>ID</th>
+            <th scope='col'>Story Title</th>
+            <th scope='col'>User Story</th>
+            <th scope='col'>Acceptance Criteria</th>
+            <th scope='col'>Business Value</th>
+            <th scope='col'>Estimation</th>
+            <th scope='col'>Status</th>
+        </tr>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry.id }}</td>
+            <td>{{ entry.story_title }}</td>
+            <td>{{ entry.user_story }}</td>
+            <td>{{ entry.acceptance_criteria }}</td>
+            <td>{{ entry.business_value }}</td>
+            <td>{{ entry.estimation }}</td>
+            <td>{{ entry.status }}</td>
+            <td>
+                <form action={{url_for( 'delete_story', story_id=entry.id)}} method='post'>
+                    <button type='' style='font-size:24px' onclick="alert('User Story will be deleted!')">&#128465;</button>
+                </form>
+            </td>
+            <td>
+                <form action={{url_for('edit_story', story_id=entry.id)}} method='post'>
+                    <button type='' style='font-size:24px'>&#9998;</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<br>
+  
+{% endif %}
+<ul class=entries>
+    {% for entry in entries %}
+    <li>
+        <h2>{{ entry.title }}</h2>{{ entry.text|safe }} {% else %}
+        <li><em>Unbelievable. Super Sprinter 3000.</em> {% endfor %}
+</ul>
+{% endblock %}
